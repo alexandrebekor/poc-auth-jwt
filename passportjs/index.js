@@ -1,10 +1,12 @@
 const express = require('express')
 const app = express()
 const port = process.env.PORT || 3000
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
 
-app.get('/', (req, res) => {
-    res.send('Hello World!')
-})
+// Session
+const session = require('express-session')
+app.use(session({ secret: 'bekor', resave: false, saveUninitialized: true }))
 
 // Router
 const PageRouter = require('./routes/page')
