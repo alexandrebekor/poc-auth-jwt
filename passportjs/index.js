@@ -6,4 +6,8 @@ app.get('/', (req, res) => {
     res.send('Hello World!')
 })
 
+// Router
+const PageRouter = require('./routes/page')
+app.use('/', PageRouter)
+
 app.listen(port, () => { console.log('Running on ' + port) })
