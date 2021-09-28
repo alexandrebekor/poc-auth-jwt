@@ -8,6 +8,11 @@ app.use(express.urlencoded({ extended: true }))
 const session = require('express-session')
 app.use(session({ secret: 'bekor', resave: false, saveUninitialized: true }))
 
+// Template
+const path = require('path')
+app.set('views', path.join(__dirname, 'views'))
+app.set('view engine', 'ejs')
+
 app.use((req, res, next) => {
     if('user' in req.session) {
         res.locals.user = req.session.user
@@ -19,8 +24,8 @@ app.use((req, res, next) => {
 const PageRouter = require('./routes/page')
 const AuthRouter = require('./routes/auth')
 const AdminRouter = require('./routes/admin')
+app.use('/', AuthRouter)
 app.use('/', PageRouter)
-app.use('/admin', AuthRouter)
 app.use('/admin', AdminRouter)
 
 app.listen(port, () => { console.log('Running on ' + port) })
