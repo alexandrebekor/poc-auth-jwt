@@ -6,7 +6,7 @@ router.get('/', (req, res) => {
 })
 
 router.get('/entrar', (req, res) => {
-    res.send('/entrar')
+    res.send('<p>/entrar</p>' + JSON.stringify(req.session))
 })
 
 router.get('/blog', (req, res) => {

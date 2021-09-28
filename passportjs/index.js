@@ -8,6 +8,13 @@ app.use(express.urlencoded({ extended: true }))
 const session = require('express-session')
 app.use(session({ secret: 'bekor', resave: false, saveUninitialized: true }))
 
+app.use((req, res, next) => {
+    if('user' in req.session) {
+        res.locals.user = req.session.user
+    }
+    next()
+})
+
 // Router
 const PageRouter = require('./routes/page')
 const AuthRouter = require('./routes/auth')
