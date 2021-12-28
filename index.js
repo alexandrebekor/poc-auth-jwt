@@ -20,14 +20,20 @@ app.use('/', routePages)
 app.use(express.static(path.join(__dirname, 'public')))
 
 const User = require('./models/users')
-mongoose
-    .connect(mongodb)
-    .then(() => {
-        User.create({
+const initialUsers = async () => {
+    const count = await User.count()
+    if (count == 0) {
+        await User.create({
             username: "Alexandre",
             password: "12345",
             roles: "Admin"
         })
+    }
+}
+mongoose
+    .connect(mongodb)
+    .then(() => {
+        initialUsers()
         app.listen(port, console.log('Server is runnig'))
     })
     .catch(error => console.log(error))
