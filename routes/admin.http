@@ -1,0 +1,2 @@
+GET http://localhost:3000/admin
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxY2IyOGYxMzY1M2FkOTNiZTE1MDYwYSIsInVzZXJuYW1lIjoiQWxleGFuZHJlIiwicm9sZXMiOlsiQWRtaW4iXSwiaWF0IjoxNjQwNzA4MTA2fQ.21RLS9bQQlextsY-DWi8-m8VRvHC0mOKqrn9eNghdfQ

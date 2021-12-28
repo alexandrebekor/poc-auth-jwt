@@ -16,6 +16,9 @@ app.use(express.urlencoded({ extended: true }))
 const routePages = require('./routes/pages')
 app.use('/', routePages)
 
+const routeAdmin = require('./routes/admin')
+app.use('/admin', routeAdmin)
+
 // assets
 app.use(express.static(path.join(__dirname, 'public')))
 
